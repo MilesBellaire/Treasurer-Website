@@ -1,0 +1,23 @@
+{% extends 'main/base_sidebar.html' %}
+
+{% block title %}
+Current Requests
+{% endblock %}
+
+{% block content %}
+    <h1>Current Requests</h1>
+    <ul>
+        <form method="post" action="/current-requests/">
+            {% csrf_token %}
+            {% for request in requests %}
+                <li>
+                    {{request}} {{request.id}}
+                    {% if is_staff and not request.approved%}
+                        <button type="submit" name="{{request.id}}">Approve</button>
+                    {% endif %}
+                </li>
+            {% endfor%}
+        </form>
+    </ul>
+    <a href="/request"><button>Make Request</button></a>
+{% endblock %}

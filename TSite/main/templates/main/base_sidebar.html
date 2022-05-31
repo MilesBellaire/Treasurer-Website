@@ -1,0 +1,21 @@
+<html>
+
+    <head>
+
+        <title>{% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+        <div id="content", name="content">
+            {% if user.is_authenticated %}
+                {% block content %}
+                {% endblock %}
+                <a href="/logout"><button>Logout</button></a>
+            {% else %}
+                <p>Login <a href="/login">Here</a></p>
+            {% endif %}
+        </div>
+    </body>
+
+</html>

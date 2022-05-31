@@ -1,0 +1,14 @@
+{% extends "main/base.html" %}
+
+{% block title %}Create an Account{% endblock %}
+
+{% block contect %}
+    <form method="POST" class="form-group">
+        {{form}}
+        <button type="submit" class="btn btn-success">Register</button>
+    </form>
+{% endblock %} 
+
+How to open sheets in the app
+https://stackoverflow.com/questions/19877231/embed-editable-google-doc-spreadsheet-in-web-page
+

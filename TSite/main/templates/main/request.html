@@ -1,0 +1,15 @@
+{% extends 'main/base_sidebar.html' %}
+
+{% block title %}
+Request
+{% endblock %}
+
+{% block content %}
+    <h1>Submit Request</h1>
+    <form method="post" action="/request/">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type="submit", name="save">Submit</button>
+    </form>
+    <a href="/current-requests"><button>View Requests</button></a>
+{% endblock %}
