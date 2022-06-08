@@ -5,19 +5,47 @@ Current Requests
 {% endblock %}
 
 {% block content %}
+<style type="text/css">
+
+
+
+    .request{
+        border: 1px solid rgb(0, 0, 0);
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .date{width: 10%;}
+    .name{width:20%;}
+    .reason{width:35%;}
+    .approve{width:20%;}
+    .amount{width:15%;}
+</style>
     <h1>Current Requests</h1>
-    <ul>
+    
         <form method="post" action="/current-requests/">
             {% csrf_token %}
-            {% for request in requests %}
-                <li>
-                    {{request}} {{request.id}}
-                    {% if is_staff and not request.approved%}
-                        <button type="submit" name="{{request.id}}">Approve</button>
-                    {% endif %}
-                </li>
-            {% endfor%}
+            
+                {% for request in requests %}
+                <div class="request">
+                    <p>
+                        <div class="date">{{request.date}}</div>
+                        <div class="name">{{request.user.first_name}} {{request.user.last_name}}</div>
+                        <div class="reason">{{request.reason}}</div>
+                        <div class="amount">${{request.amount}}</div>
+                        <div class="approve"> 
+                            {% if request.approved %} 
+                                Approved 
+                            {% elif is_staff %}
+                                <button type="submit" name="{{request.id}}" class="approve_button" onclick="return confirm('Are you sure you want to approve this request?')">Approve</button>
+                            {% else %}
+                                Not Approved
+                            {% endif %}
+                        </div>
+                    </p>
+                </div>
+                {% endfor%}
         </form>
-    </ul>
-    <a href="/request"><button>Make Request</button></a>
+    
 {% endblock %}

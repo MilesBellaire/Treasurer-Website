@@ -1,0 +1,17 @@
+{% extends 'main/base.html' %}
+
+{% block title %}{% endblock %}
+
+    {% block basecontent %}
+        {% if user.is_authenticated %}
+            {% block content %}
+            {% endblock %}
+            <br>
+            <a href="/request"><button>Make Request</button></a>
+            <a href="/current-requests"><button>View Requests</button></a>
+            {% if user.is_staff %} <a href="/budget_tracking"><button>Budget Tracking</button></a> {% endif %}
+            <a href="/logout"><button>Logout</button></a>
+        {% else %}
+            <p>Login <a href="/login">Here</a></p>
+        {% endif %}
+    {% endblock %}

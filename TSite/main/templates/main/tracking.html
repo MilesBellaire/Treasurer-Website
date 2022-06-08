@@ -1,17 +1,14 @@
 {% extends 'main/base_sidebar.html' %}
 
 {% block title %}
-Request
+Tracking
 {% endblock %}
 
-{% load crispy_forms_tags %}
-
 {% block content %}
-    <h1>Submit Request</h1>
-    <form method="post" action="/request/">
+    <h1>Tracking</h1>
+    <form method="post">
         {% csrf_token %}
-        {{form|crispy}}
-        <br>
+        {{form.as_p}}
         <button type="submit", name="save">Submit</button>
     </form>
 {% endblock %}

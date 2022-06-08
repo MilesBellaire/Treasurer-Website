@@ -8,6 +8,7 @@ class RegisterForm(UserCreationForm):
     first_name = forms.CharField(empty_value="First Name", max_length=25)
     last_name = forms.CharField(empty_value="Last Name", max_length=25)
 
+
     class Meta:
         model = User
         fields = ["first_name", "last_name", "email", "username", "password1", "password2"]

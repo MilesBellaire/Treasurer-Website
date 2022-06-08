@@ -1,5 +1,35 @@
 <html>
-
+    <style type="text/css">
+        body {
+            text-align: center;
+            background-color: green;
+            color:aliceblue;
+            text-decoration-color: black;
+            font-size: 30px;
+        }
+        button {
+            top:50%;
+            background-color:white;
+            color: black;
+            border:none;
+            border-radius:20px;
+            font-size: 30px;
+        }
+        button:hover{
+            box-shadow: 0px 0px 2px 2px rgb(70, 70, 70);
+        }
+        input {
+            width: 300px;
+            height: 50px;
+            font-size: 30px;
+            border-radius:20px;
+            text-align: center;
+        }
+        ul li{
+            font-size: 71%;
+            list-style: none;
+        }
+    </style>
     <head>
 
         <title>{% block title %}{% endblock %}</title>
@@ -8,7 +38,7 @@
 
     <body>
         <div id="content", name="content">
-            {% block content %}
+            {% block basecontent %}
             {% endblock %}
         </div>
     </body>
